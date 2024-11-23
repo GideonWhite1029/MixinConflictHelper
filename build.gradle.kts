@@ -1,8 +1,8 @@
 plugins {
     java
 
-    id("fabric-loom") version "0.12.+"
-    id("io.github.juuxel.loom-quiltflower") version "1.7.+"
+    id("fabric-loom") version "1.8-SNAPSHOT"
+    id("io.github.juuxel.loom-quiltflower") version "1.8.+"
 
     id("com.modrinth.minotaur") version "2.4.+"
     id("me.hypherionmc.cursegradle") version "2.0.+"
@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "dev.isxander"
-version = "1.2.0"
+version = "1.3.0"
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ dependencies {
     val fabricLoaderVersion: String by project
 
     minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$minecraftVersion+build.+:v2")
+    mappings("net.fabricmc:yarn:$minecraftVersion+build.3:v2")
 
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 }
@@ -101,7 +101,7 @@ if (hasProperty("curseforge.token") && curseforgeId.isNotEmpty()) {
             addGameVersion(minecraftVersion)
             addGameVersion("Fabric")
             addGameVersion("Quilt")
-            addGameVersion("Java 17")
+            addGameVersion("Java 21")
 
             changelog = changelogText
             changelogType = "markdown"
@@ -121,7 +121,7 @@ githubRelease {
     owner(split[0])
     repo(split[1])
     tagName("${project.version}")
-    targetCommitish("1.19")
+    targetCommitish("1.21")
     body(changelogText)
     releaseAssets(tasks["remapJar"].outputs.files)
 }
